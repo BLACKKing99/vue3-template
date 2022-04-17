@@ -1,8 +1,8 @@
 import LRequest from '@/util/request'
 
 const lRequest = new LRequest({
-  baseURL: 'http://127.0.0.1:3000/api',
-  timeout: 10000,
+  baseURL: import.meta.env.VITE_API_URL,
+  timeout: import.meta.env.VITE_TIMEOUT,
   interceptors: {
     // 单独一个url的请求器
     requestInterceptors(config: any) {

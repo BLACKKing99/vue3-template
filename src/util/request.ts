@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import axios, { AxiosInstance } from 'axios'
 import type { LAxiosRequestConfig, LInterceptors } from '@/api/types/index'
 
 class LRequest {
@@ -6,8 +6,11 @@ class LRequest {
   interceptors: LInterceptors | undefined
   isLoading?: boolean
   constructor(config: LAxiosRequestConfig) {
+    // 创建axios 实例
     this.instance = axios.create(config)
+    // 创建axios 每个接口地址的拦截器
     this.interceptors = config.interceptors
+    // 创建 loading
     this.isLoading = config.isLoading ?? true
     this.instance.interceptors.request.use(
       this.interceptors?.requestInterceptors,
@@ -46,7 +49,7 @@ class LRequest {
     )
   }
 
-  lrequest(config: AxiosRequestConfig) {
+  lrequest(config: LAxiosRequestConfig) {
     return this.instance.request(config).then((res) => {
       return <T = any>() => {
         return res as unknown as T
