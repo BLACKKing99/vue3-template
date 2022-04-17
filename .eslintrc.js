@@ -14,5 +14,7 @@ module.exports = {
   rules: {
     'comma-dangle': 'off',
     'vue/multi-word-component-names': 'off',
+    'no-undef': 'off',
+    'space-before-function-paren': 'off',
   },
 }
