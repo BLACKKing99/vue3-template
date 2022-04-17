@@ -1,10 +1,12 @@
 import { App } from 'vue'
-import { createStore } from 'vuex'
+import { createPinia, defineStore } from 'pinia'
 
-const store = createStore({
+const store = createPinia()
+
+export const useStore = defineStore('main', {
   state: () => {
     return {
-      count: 1,
+      count: 0,
     }
   },
 })
@@ -12,3 +14,5 @@ const store = createStore({
 export default (app: App<Element>) => {
   app.use(store)
 }
+
+export { store }
